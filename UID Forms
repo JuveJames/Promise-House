@@ -10,7 +10,6 @@ function printUrl()
   
   var range = sheet.getRange(2,2); 
 
-  // Skip headers, then build URLs for each row in Sheet1.
   for (var i = 0; i < data.length; i++ ) 
   {
    // Create a form response object, and prefill it
@@ -20,10 +19,9 @@ function printUrl()
    var formItem = items[0].asTextItem();
    var response = formItem.createResponse(data[i][1]);
    formResponse.withItemResponse(response);
-   form.setDescription(data[i][1]);
+   //form.setDescription(data[i][1]);
    var s = ss.getSheetByName('FormResponses1');
 
-   
    // Get prefilled form URL
    var url = formResponse.toPrefilledUrl();
    
@@ -31,6 +29,6 @@ function printUrl()
    {
      sheet.getRange((i+1),3).setValue(url);
    }
-   Logger.log(url);  // You could do something more useful here.
+   Logger.log(url);
   }
 };
